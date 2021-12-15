@@ -1,0 +1,10 @@
+.home-container {
+}
+
+.home-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 120px;
+    padding-left: 120px;
+    justify-content: space-between;
+}

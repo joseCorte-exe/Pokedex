@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+.card-container {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: black;
+
+    color: white;
+
+    border-radius: 8px;
+
+    font-family: 'Baloo 2', cursive;
+
+    width: 250px;
+    height: 360px;
+
+    margin-bottom: 35px;
+}
+
+.type {
+    border-style: none;
+    border-radius: 6px;
+
+    width: 100px;
+    height: 25px;
+
+    font-family: 'Baloo 2', cursive;
+
+    background-color: orange;
+}
+
