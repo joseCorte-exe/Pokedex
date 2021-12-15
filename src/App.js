@@ -4,7 +4,7 @@ import Card from './components/card';
 import Header from './components/header';
 import Home from './pages/home';
 
-import './App.css';
+import './styles/global.css';
 
 function App() {
   return (

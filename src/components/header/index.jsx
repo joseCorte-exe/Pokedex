@@ -7,10 +7,8 @@ import './style.css'
 export default function Header() {
     return (
         <header>
-            <ul>
-                <Link to='/home'> <li>PokeCodex</li> </Link>
+                <Link to='/home'> <a>PokeCodex</a> </Link>
                 <input />
-            </ul>
         </header>
     )
 }
