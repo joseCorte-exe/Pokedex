@@ -41,15 +41,15 @@ export default function Card(props) {
         <div className='card-container'>
             <h3>{props.number}</h3>
             <img src={props.img}/>
-            <div className='card-content'>
+            <section>
                 <h3>{props.name}</h3>
-                <div>
-                <button className='type'>fire</button>
-                    {
-                        types.map(type => type)
-                    }
-                </div>
-            </div>
+                <article>
+                    <button className='type'>fire</button>
+                        {
+                            types.map(type => type)
+                        }
+                </article>
+            </section>
         </div>
     )
 }

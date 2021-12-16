@@ -17,14 +17,14 @@ header {
     font-size: 24px;
 }
 
-a {
-    list-style: none;
 
-    display: flex;
+.link {
+    text-decoration: none;
+    color: white;
+}
 
-    justify-content: space-between;
-    align-items: center;
-    
+input {
+    padding: 0.5rem;
 }
 
 input {
