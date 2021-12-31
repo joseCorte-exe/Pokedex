@@ -36,7 +36,6 @@ export default function Card(props) {
     }, [])
 
         // .then(res => (console.log(res.data)))
-
     return (
         <div className='card-container'>
             <h3>{props.number}</h3>
