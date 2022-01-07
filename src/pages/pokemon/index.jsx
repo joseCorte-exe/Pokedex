@@ -126,7 +126,7 @@ export default function Pokemon() {
 
         return (
         <main style={{backgroundColor: `${bgColor}`}} className='poke-main'>
-            <img src={poke.img} width={'200px'} alt={poke.name}/>
+            <img src={poke.img} alt={poke.name}/>
             <h1>{pokeName}</h1>
             <Panel id={poke.id} hp={poke.hp} attack={poke.attack} defense={poke.defense} type={poke.type} height={poke.height} weight={poke.weight} />
         </main>
