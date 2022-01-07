@@ -10,7 +10,7 @@ import './style.css'
 export default function Home() {
 
     const app = axios.create({
-        baseURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1118',
+        baseURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=898',
     });
 
     const [poke, setPoke] = useState([]);

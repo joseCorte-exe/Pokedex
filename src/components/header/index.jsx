@@ -6,7 +6,7 @@ import './style.css'
 
 export default function Header() {
     return (
-        <header>
+        <header className='header-nav'>
                 <Link to='/' className='link' >PokeCodex</Link>
                 <input placeholder='procure por um pokemom' />
         </header>
