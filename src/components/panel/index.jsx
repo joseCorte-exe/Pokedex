@@ -11,12 +11,19 @@ export default function Panel({hp, atttack, defense, type, height, weight}) {
     const pokeName = useParams().name
 
     const [abilities, setAbilities] = useState([])
+    const [moves, setMoves] = useState([])
     
     useEffect(() => {
         app.get(`/${pokeName}`)
         .then(res => (setAbilities(res.data.abilities)))
-        // getAbilities(); 
+        .catch(err => console.log(err))
+
+        app.get(`/${pokeName}`)
+        .then(res => (setMoves(res.data.moves)))
+        .catch(err => console.log(err))
         }, [])
+
+        // console.log(moves.map(move => move.move.name))
 
     return (
         <main className='panel' >
@@ -36,12 +43,23 @@ export default function Panel({hp, atttack, defense, type, height, weight}) {
                 </header>
                 <hr></hr>
                 <article className='panel-article'>
-                    <h3>abilities</h3>
-                    <ul>
-                        {
-                            abilities.map(ability => (<li key={ability.ability.name}>{ability.ability.name}</li>))
-                        }
-                    </ul>
+                    <section>
+                        <h3>Abilities</h3>
+                        <ul>
+                            {
+                                abilities.map(ability => (<li key={ability.ability.name}>{ability.ability.name}</li>))
+                            }
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>Moves</h3>
+                        <ul>
+                            {
+                                moves.slice(0, 5).map(moves => (<li key={moves.move.name}>{moves.move.name}</li>))
+                            }
+                        </ul>
+                    </section>
                 </article>
             </section>
         </main>

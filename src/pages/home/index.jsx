@@ -3,14 +3,13 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import Card from '../../components/card'
-import Header from '../../components/header'
 
 import './style.css'
 
 export default function Home() {
 
     const app = axios.create({
-        baseURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=898',
+        baseURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50', // max limit is 898
     });
 
     const [poke, setPoke] = useState([]);
@@ -20,7 +19,7 @@ export default function Home() {
 
     useEffect(() => {
         app.get('/')
-            .then(res => (setPoke(res.data.results.map(poke => poke.name))))
+            .then(res => (setPoke(res.data.results)))
 
         }, [])
 
@@ -36,7 +35,7 @@ export default function Home() {
         <div className='home-container'>
             <div className='home-content'>
                 {
-                    poke.map(poke => [<Link to={`/pokemon/${poke}`} className='link' ><Card name={poke} number='' img={pokeImg[i]} /></Link>, [handleCounter()]])
+                    poke.map(poke => [<Link to={`/pokemon/${poke.name}`} className='link' ><Card name={poke.name} number='' img={pokeImg[i]} /></Link>, [handleCounter()]])
                 }   
             </div>
         </div>

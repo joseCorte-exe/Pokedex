@@ -26,7 +26,7 @@ header {
 
 .link {
     text-decoration: none;
-    color: white;
+    /* color: white; */
 }
 
 input {
@@ -42,4 +42,8 @@ input {
     background-color: #A7A7A7;
 
     font-family: 'Baloo 2', cursive;
+}
+
+img {
+    /* z-index: 0; */
 }

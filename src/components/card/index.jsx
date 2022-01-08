@@ -3,51 +3,28 @@ import axios from 'axios';
 
 import './style.css'
 
-export default function Card(props) {
+export default function Card({img, number, name}){
 
-    const types = [props.type]
-
-    const [poke, setPoke] = useState({
-        name: "",
-        species: "",
-        img: "",
-        hp: "",
-        atttack: "",
-        defense: "",
-        type: "",
-    });
+    const [type, setType] = useState();
 
     const app = axios.create({
-        baseURL: 'https://pokeapi.co/api/v2/pokemon/charizard',
+        baseURL: `https://pokeapi.co/api/v2/pokemon/${name}`,
     });
 
     useEffect(() => {
         app.get('/')
-            .then(res => setPoke({
-                name: "pokemonName",
-                species: res.data.species.name,
-                img: res.data.sprites.front_default,
-                hp: "",
-                atttack: "",
-                defense: "",
-                type: "",
-            }))
-            .then(console.log(poke.img))
+            // .then(res => setType(res => (console.log(res.data))))
+            .catch(err => console.log(err))
     }, [])
-
-        // .then(res => (console.log(res.data)))
 
     return (
         <div className='card-container'>
-            <h3>{props.number}</h3>
-            <img src={props.img}/>
+            <h3>{number}</h3>
+            <img src={img}/>
             <section>
-                <h3>{props.name}</h3>
+                <h3>{name}</h3>
                 <article>
-                    <button className='type'>fire</button>
-                        {
-                            types.map(type => type)
-                        }
+                    <button className='type'>{type}</button>
                 </article>
             </section>
         </div>
