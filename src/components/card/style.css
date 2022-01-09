@@ -29,7 +29,14 @@
     height: 25px;
 
     font-family: 'Baloo 2', cursive;
-
-    background-color: orange;
 }
 
+.card-type{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    grid-template-columns: 1;
+    grid-template-rows: 2;
+    grid-row-gap: 10px;
+}

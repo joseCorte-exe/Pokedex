@@ -124,6 +124,8 @@ export default function Pokemon() {
                 break;
         }
 
+        console.log(poke.attack)
+
         return (
         <main style={{backgroundColor: `${bgColor}`}} className='poke-main'>
             <img src={poke.img} alt={poke.name}/>

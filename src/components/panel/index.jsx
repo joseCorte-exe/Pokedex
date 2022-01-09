@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './style.css'
 
-export default function Panel({hp, atttack, defense, type, height, weight}) {
+export default function Panel({hp, attack, defense, type, height, weight}) {
 
     const app = axios.create({ baseURL: 'https://pokeapi.co/api/v2/pokemon' })
 
@@ -35,7 +35,7 @@ export default function Panel({hp, atttack, defense, type, height, weight}) {
                     <dev-divisor/>
                     <h4>hp: {hp}</h4>
                     <dev-divisor/>
-                    <h4>attack: {atttack}</h4>
+                    <h4>attack: {attack}</h4>
                     <dev-divisor/>
                     <h4>defense: {defense}</h4>
                     <dev-divisor/>

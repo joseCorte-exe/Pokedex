@@ -9,13 +9,18 @@ import './style.css'
 export default function Home() {
 
     const app = axios.create({
-        baseURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50', // max limit is 898
+        baseURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=898', // max limit is 898
     });
 
     const [poke, setPoke] = useState([]);
 
+    const [currentPage, setCurrentPage] = useState(0);
+    const pages = 18;
+    const startIndex = currentPage * 50;
+    const endIndex = startIndex + 50;
+    const currentPoke = poke.slice(startIndex, endIndex);
+
     let pokeImg = []
-    let i=1;
 
     useEffect(() => {
         app.get('/')
@@ -27,17 +32,24 @@ export default function Home() {
         pokeImg.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`)
     }
 
-    function handleCounter() {
-        i++
+    function image(i) {
+        return pokeImg[i]
     }
 
+    console.log(poke)
+
     return (
-        <div className='home-container'>
-            <div className='home-content'>
+        <main className='home-container'>
+            <section className='home-content'>
                 {
-                    poke.map(poke => [<Link to={`/pokemon/${poke.name}`} className='link' ><Card name={poke.name} number='' img={pokeImg[i]} /></Link>, [handleCounter()]])
+                    currentPoke.map((poke, index) => [<Link to={`/pokemon/${poke.name}`} className='link' ><Card name={poke.name} number='' img={image(startIndex + index + 1)} /></Link>])
                 }   
-            </div>
-        </div>
+            </section>
+            <section>
+                {Array.from(Array(pages), (item, index) => {
+                    return <button className='btn-page' value={index} onClick={(e) => setCurrentPage(Number(e.target.value))} >{index}</button>
+                })}
+            </section>
+        </main>
     )
 }
