@@ -10,7 +10,7 @@ import './styles/global.css';
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/pokemon/:name' element={<Pokemon />} />

@@ -3,10 +3,11 @@ import axios from 'axios';
 
 import './style.css'
 
-export default function Card({img, number, name}){
+export default function Card({number, name}){
 
     const [type, setType] = useState();
     const [type2, setType2] = useState();
+    const [image, setImage] = useState();
 
     let typeColor = '';
     let typeColor2 = '';
@@ -22,6 +23,10 @@ export default function Card({img, number, name}){
 
         app.get('/' + name)
         .then(res => (setType2(res.data.types[1].type.name)))
+        .catch(err => console.log(err))
+
+        app.get('/' + name)
+        .then(res => (setImage(res.data.sprites.front_default)))
         .catch(err => console.log(err))
     }, [name])
 
@@ -184,7 +189,7 @@ export default function Card({img, number, name}){
     return (
         <div className='card-container'>
             <h3>{number}</h3>
-            <img src={img}/>
+            <img src={image}/>
             <section>
                 <h3>{name}</h3>
                 <article className='card-type' >

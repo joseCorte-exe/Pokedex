@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Panel from '../../components/panel';
+import Header from '../../components/header';
 
 import './style.css';
 
@@ -124,10 +125,9 @@ export default function Pokemon() {
                 break;
         }
 
-        console.log(poke.attack)
-
         return (
         <main style={{backgroundColor: `${bgColor}`}} className='poke-main'>
+            <Header />
             <img src={poke.img} alt={poke.name}/>
             <h1>{pokeName}</h1>
             <Panel id={poke.id} hp={poke.hp} attack={poke.attack} defense={poke.defense} type={poke.type} height={poke.height} weight={poke.weight} />
