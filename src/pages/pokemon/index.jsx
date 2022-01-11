@@ -126,11 +126,13 @@ export default function Pokemon() {
         }
 
         return (
-        <main style={{backgroundColor: `${bgColor}`}} className='poke-main'>
-            <Header />
-            <img src={poke.img} alt={poke.name}/>
-            <h1>{pokeName}</h1>
-            <Panel id={poke.id} hp={poke.hp} attack={poke.attack} defense={poke.defense} type={poke.type} height={poke.height} weight={poke.weight} />
+        <main style={{backgroundImage: `linear-gradient(115deg, ${bgColor}, #ffc400)`}} className='poke-main'>
+            <Header className='header' />
+            <section className='poke-section'>
+                <img src={poke.img} alt={poke.name}/>
+                <h1>{pokeName}</h1>
+                <Panel id={poke.id} hp={poke.hp} attack={poke.attack} defense={poke.defense} type={poke.type} height={poke.height} weight={poke.weight} />
+            </section>
         </main>
     )
 }
