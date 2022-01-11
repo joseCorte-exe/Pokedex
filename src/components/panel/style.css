@@ -26,6 +26,9 @@
 
     background: rgb(0, 0, 0);
 
+    margin-top: 30px;
+    margin-bottom: 20px;
+
     font-size: 14px;
 }
 
@@ -57,4 +60,34 @@ ul {
     padding-left: 20px; 
 
     margin: 0;
+}
+
+@media (max-width: 600px) {
+    .panel {
+        width: 100%;
+        height: auto;
+    }
+
+    .panel-header {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    h4 {
+        margin-bottom: 10px;
+    }
+
+    dev-divisor {
+        display: none;
+    }
+
+    .panel-article {
+        padding-inline: 20px;
+    }
+
+    dev-divisor {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }

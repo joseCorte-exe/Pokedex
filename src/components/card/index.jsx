@@ -188,8 +188,9 @@ export default function Card({number, name}){
 
     return (
         <div className='card-container'>
-            <h3>{number}</h3>
-            <img src={image}/>
+            <section className='card-image' >
+                <img src={image}/>
+            </section>
             <section>
                 <h3>{name}</h3>
                 <article className='card-type' >
