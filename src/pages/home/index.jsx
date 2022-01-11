@@ -7,15 +7,15 @@ import Logo from '../../assets/pokemonLogo.svg'
 import Card from '../../components/card'
 
 import './style.css'
-import Pokemon from '../pokemon';
 
 export default function Home() {
 
     const app = axios.create({
-        baseURL: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=898', // max limit is 898
+        baseURL: 'https://pokeapi.co/api/v2/', // max limit is 898
     });
 
     const [poke, setPoke] = useState([]);
+    const [types, setTypes] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(0);
     const pages = 18;
@@ -26,8 +26,11 @@ export default function Home() {
     let pokeImg = []
 
     useEffect(() => {
-        app.get('/')
+        app.get('pokemon/?offset=0&limit=898') // max limit is 898
             .then(res => (setPoke(res.data.results)))
+
+        app.get('type')
+            .then(res => (setTypes(res.data.results)))
     }, [])
 
     for (let i = 0; i <= 1118; i++) {
@@ -44,7 +47,85 @@ export default function Home() {
         setSearch(e.target.value)
     }
 
-    // useEffect(() => {console.log(search)}, [search])
+    function handleTypeColor(value) {
+        switch (value) {
+            case 'normal':
+                return'#fff'
+                break;
+            
+            case 'fighting':
+                return '#f44336'
+                break;
+            
+            case 'flying':
+                return '#3f51b5'
+                break;
+    
+            case 'poison':
+                return '#cddc39'
+                break;
+    
+            case 'ground':
+                return '#ff9800'
+                break;
+    
+            case 'rock':
+                return '#795548'
+                break;
+    
+            case 'bug':
+                return '#4caf50'
+                break;
+    
+            case 'ghost':
+                return '#9e9e9e'
+                break;
+    
+            case 'steel':
+                return '#607d8b'
+                break;
+    
+            case 'fire':
+                return '#f44336'
+                break;
+    
+            case 'water':
+                return '#2196f3'
+                break;
+    
+            case 'grass':
+                return '#4caf50'
+                break;
+    
+            case 'electric':
+                return '#ffeb3b'
+                break;
+    
+            case 'psychic':
+                return '#ff5722'
+                break;
+    
+            case 'ice':
+                return '#00bcd4'
+                break;
+    
+            case 'dragon':
+                return '#3f51b5'
+                break;
+    
+            case 'dark':
+                return '#424242'
+                break;
+    
+            case 'fairy':
+                return '#e91e63'
+                break;
+    
+            default:
+                return '#fff'
+                break;
+        }
+    }
 
     return (
         <main className='home-container'>
@@ -54,16 +135,22 @@ export default function Home() {
                     <input placeholder='procure por um pokemom' onChange={handleChange} />
             </header>
 
+            <header className='typesHeader'>
+                {
+                    types.map(type => (<Link  to={`/type/${type.name}`}><button className='typeHeader'style={{backgroundColor: `${handleTypeColor(type.name)}`}} >{type.name}</button></Link>))
+                }
+            </header>
+
             <section className='home-content'>
                 {
                     currentPoke.filter((value, index) => value.name.includes(search)).map((poke, index) => [<Link to={`/pokemon/${poke.name}`} className='link' ><Card name={poke.name} number='' img={image(startIndex + index + 1)} /></Link>])
                 }   
             </section>
-            <section>
+            <footer>
                 {Array.from(Array(pages), (item, index) => {
                     return <button className='btn-page' value={index} onClick={(e) => setCurrentPage(Number(e.target.value))} >{index}</button>
                 })}
-            </section>
+            </footer>
         </main>
     )
 }

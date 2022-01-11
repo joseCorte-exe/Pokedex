@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Card from './components/card';
-import Header from './components/header';
 import Home from './pages/home';
+import Header from "./components/header";
 import Pokemon from "./pages/pokemon";
+import PerTypes from "./pages/types";
 
 import './styles/global.css';
 
@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/pokemon/:name' element={<Pokemon />} />
+        <Route path='/type/:type' element={<PerTypes />} />
       </Routes>
     </div>
   );
